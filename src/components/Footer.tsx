@@ -31,7 +31,7 @@ const Footer = () => {
               <FaLinkedin className="text-2xl" />
             </a>
             <a 
-              href="#" 
+              href="https://github.com/grizzlijs/portfolio/" 
               className="text-slate-400 hover:text-white transition"
               aria-label="GitHub Profile"
             >
