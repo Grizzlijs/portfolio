@@ -1,0 +1,300 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  color: #1e293b;
+}
+
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #0ea5e9, #0369a1);
+}
+
+.skill-pill {
+  transition: all 0.3s ease;
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 32px;
+  height: calc(100% - 32px);
+  width: 1px;
+  background-color: #e2e8f0;
+}
+
+.podcast-player {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.1), 0 4px 6px -2px rgba(14, 165, 233, 0.05);
+  transition: all 0.5s ease;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.5); }
+  100% { box-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
+}
+
+.podcast-playing {
+  animation: pulse-glow 2s infinite;
+  transform: translateY(-5px);
+}
+
+/* Podcast notification styles */
+@keyframes slide-in {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.podcast-notification-enter {
+  animation: slide-in 0.5s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.podcast-notification-enter:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.25);
+}
+
+.podcast-notification-icon {
+  animation: bounce-subtle 2s ease infinite;
+}
+
+/* Audio wave animation */
+.audio-wave {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  gap: 2px;
+}
+
+.audio-wave .wave-bar {
+  width: 2px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1px;
+  transition: height 0.2s ease;
+}
+
+.audio-wave.playing .wave-bar {
+  animation: sound-wave 1s ease infinite;
+}
+
+.audio-wave.playing .wave-bar:nth-child(1) { animation-delay: 0.0s; }
+.audio-wave.playing .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+.audio-wave.playing .wave-bar:nth-child(3) { animation-delay: 0.1s; }
+.audio-wave.playing .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.audio-wave.playing .wave-bar:nth-child(5) { animation-delay: 0.15s; }
+
+@keyframes sound-wave {
+  0%, 100% { height: 6px; }
+  50% { height: 12px; }
+}
+
+.contact-podcast-wrapper {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.contact-podcast-wrapper.highlight {
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
+}
+
+.contact-podcast-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.2), transparent);
+}
+
+.loading-spinner {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.play-btn:hover,
+.play-podcast-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.play-podcast-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-podcast-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.play-podcast-btn:hover::after {
+  opacity: 1;
+}
+
+.tech-stack-icon {
+  transition: all 0.3s ease;
+}
+
+.tech-stack-icon:hover {
+  transform: scale(1.15);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #0ea5e9;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #0369a1);
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  .section-title::after {
+    width: 100%;
+  }
+  
+  /* Ensure all section components have 2rem top padding on mobile */
+  section {
+    padding-top: 2rem !important;
+  }
+  
+  /* Apply the same padding to other container elements that might need it */
+  .contact-podcast-wrapper {
+    padding-top: 2rem !important;
+  }
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+.contact-input {
+  transition: all 0.3s ease;
+  border: 1px solid #cbd5e1;
+}
+
+.contact-input:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+.contact-podcast-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.contact-side {  background-color: white;
+  padding: 2rem;
+}
+
+/* Showcase component styles */
+.code-example {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.code-example::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.code-example::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 4px;
+}
+
+.code-example::-webkit-scrollbar-track {  background-color: #1e293b;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s ease infinite;
+}
+
+.loading-spinner {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
